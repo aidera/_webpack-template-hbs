@@ -29,13 +29,15 @@ const pages = fs.readdirSync(PATH.pages);
 
 
 function EntryObject(args){
-    // Remove this to not split js files for each page
+
     args.map((arg) => {
         this[arg] = `${PATH.pages}/${arg}/${arg}.ts`   // ./index/index.ts, ./catalog/catalog.ts
     })
-
     // Common files for all pages
     this.common = ['@babel/polyfill'];
+
+    // Remove this ALL to not split js files for each page
+    // and add this.bundle = ['@babel/polyfill', `${PATH.src}/layout/layout.ts`];
 }
 
 const entryObject = new EntryObject(pages);
@@ -114,6 +116,7 @@ module.exports = {
                 template: `${PATH.pages}/${page}/${page}.hbs`,
                 filename: page+'.html',
                 // Remove this if you dont wanna use chunks
+                // and add  chunks: ['bundle'],
                 chunks: ['common', page],
                 minify: {
                     collapseWhitespace: !isDev,

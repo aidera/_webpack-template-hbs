@@ -1,0 +1,50 @@
+$general-bg-color: #2A3A2A;
+$general-text-color: #221E13;
+
+
+$desktopWidth: 1280px;
+$smDesktopWidth: 980px;
+$tabletWidth: 768px;
+$phoneWidth: 480px;
+$smPhoneWidth: 320px;
+
+$mainFontSize: 18px;
+$mainLineHeight: 1.4;
+$mainFontWeight: 400;
+
+
+
+
+@function rem($pixels, $context: $mainFontSize) {
+    @if (unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+
+    @if (unitless($context)) {
+        $context: $context * 1px;
+    }
+
+    @return $pixels / $context * 1rem;
+
+}
+
+// Usage:
+// "font-size: rem(20)"
+// will be automaticly resize with mediaqueries in html tag
+
+// html
+//
+//     font-size: $mainFontSize
+//
+//     @media screen and (max-width: $desktopWidth)
+//         font-size: 16px
+//
+//     @media screen and (max-width: $tabletWidth)
+//         font-size: 15px
+//
+//     @media screen and (max-width: $phoneWidth)
+//         font-size: 14px
+
+
+
+

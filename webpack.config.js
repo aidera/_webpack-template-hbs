@@ -43,7 +43,7 @@ function EntryObject(args){
 const entryObject = new EntryObject(pages);
 
 
-
+// Remove .[hash] if u don't wanna use it
 const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`
 
 
